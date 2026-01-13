@@ -7,13 +7,14 @@ metadata:
   name: rollout-bluegreen
 spec:
   replicas: 4
+  revisionHistoryLimit: 3 
   selector:
     matchLabels:
       app: vote
   strategy:
    blueGreen:
      autoPromotionEnabled: true
-     autoPromotionSeconds: 30
+     autoPromotionSeconds: 60
      activeService: vote
      previewService: vote-preview
   template:
